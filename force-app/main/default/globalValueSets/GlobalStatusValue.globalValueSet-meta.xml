@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>NotStarted</fullName>
+        <default>true</default>
+        <label>Not Started</label>
+    </customValue>
+    <customValue>
+        <fullName>InProgress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+    </customValue>
+    <customValue>
+        <fullName>Stopped</fullName>
+        <default>false</default>
+        <label>Stopped</label>
+    </customValue>
+    <customValue>
+        <fullName>Blocked</fullName>
+        <default>false</default>
+        <label>Blocked</label>
+    </customValue>
+    <customValue>
+        <fullName>Completed</fullName>
+        <default>false</default>
+        <label>Completed</label>
+    </customValue>
+    <masterLabel>Global Status Value</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
