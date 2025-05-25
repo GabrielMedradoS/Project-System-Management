@@ -1,0 +1,63 @@
+<template>
+  <lightning-card title="DEFINE MILESTONES" icon-name="standard:lead_list">
+    <div class="slds-p-around_medium">
+      <lightning-accordion allow-multiple-sections-open>
+        <template for:each={milestoneData} for:item="milestone" for:index="i">
+          <lightning-accordion-section
+            name={milestone.name}
+            label={milestone.type}
+            key={id}
+          >
+            <div class="slds-grid slds-gutters slds-m-bottom_medium">
+              <div class="slds-col slds-size_2-of-4">
+                <lightning-input
+                  required
+                  label="Milestone Name"
+                  value={milestone.name}
+                  data-index={i}
+                  name="name"
+                  onchange={inputHandleChange}
+                >
+                </lightning-input>
+              </div>
+
+              <div class="slds-col slds-size_1-of-4">
+                <lightning-input
+                  required
+                  type="date"
+                  label="Due Date"
+                  value={milestone.dueDate}
+                  data-index={i}
+                  name="dueDate"
+                  onchange={inputHandleChange}
+                >
+                </lightning-input>
+              </div>
+
+              <!-- Checkbox with manual label alignment -->
+              <div class="slds-col slds-size_1-of-4 slds-align-middle">
+                <div class="slds-form-element slds-p-top_large">
+                  <div class="slds-form-element__control">
+                    <label class="slds-checkbox">
+                      <input
+                        type="checkbox"
+                        name="tasksCheckbox"
+                        data-index={i}
+                        value={milestone.checkbox}
+                        onchange={inputHandleChange}
+                      />
+                      <span class="slds-checkbox_faux"></span>
+                      <span class="slds-form-element__label"
+                        >Predefined tasks ?</span
+                      >
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </lightning-accordion-section>
+        </template>
+      </lightning-accordion>
+    </div>
+  </lightning-card>
+</template>

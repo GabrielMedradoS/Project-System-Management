@@ -1,0 +1,79 @@
+<template>
+  <lightning-card title="CREATE TASKS" icon-name="standard:task">
+    <div class="slds-p-around_medium">
+      <template for:each={milestoneDataStorage} for:item="milestone">
+        <lightning-card
+          key={milestone.id}
+          title={milestone.name}
+          icon-name="standard:record"
+        >
+          <div class="slds-p-horizontal_medium slds-p-bottom_medium">
+            <!-- Tasks List -->
+            <template
+              for:each={milestone.tasks}
+              for:item="task"
+              for:index="taskId"
+            >
+              <div
+                key={task.id}
+                class="slds-grid slds-gutters slds-m-bottom_small"
+              >
+                <!-- Subject -->
+                <div class="slds-col slds-size_2-of-5">
+                  <lightning-input
+                    type="text"
+                    label="Subject"
+                    name="subject"
+                    value={task.subject}
+                    data-id={milestone.id}
+                    data-index={index}
+                    onchange={handleTaskChange}
+                  ></lightning-input>
+                </div>
+
+                <!-- Due Date -->
+                <div class="slds-col slds-size_1-of-5">
+                  <lightning-input
+                    type="date"
+                    label="Due Date"
+                    name="dueDate"
+                    value={task.dueDate}
+                    data-id={milestone.id}
+                    data-index={index}
+                    onchange={handleTaskChange}
+                  ></lightning-input>
+                </div>
+
+                <!-- Remove Task -->
+                <div
+                  class="slds-col slds-size_1-of-5 slds-align-middle slds-p-top_large"
+                >
+                  <lightning-button-icon
+                    icon-name="utility:delete"
+                    alternative-text="Remove"
+                    title="Remove"
+                    onclick={handleRemoveTask}
+                    data-id={milestone.id}
+                    data-index={index}
+                    variant="bare"
+                  ></lightning-button-icon>
+                </div>
+              </div>
+            </template>
+
+            <!-- Add Task Button -->
+            <div class="slds-m-top_medium">
+              <lightning-button
+                label="Add Task"
+                icon-name="utility:add"
+                variant="brand"
+                data-id={milestone.id}
+                onclick={handleAddTask}
+              ></lightning-button>
+            </div>
+          </div>
+        </lightning-card>
+      </template>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,78 @@
+<template>
+  <lightning-card title="PROJECT CREATION" icon-name="standard:folder">
+    <div class="slds-p-around_medium">
+      <div class="slds-m-bottom_medium">
+        <lightning-input
+          required
+          type="text"
+          label="Project title"
+          name="title"
+          value={title}
+          onchange={inputChangeHandler}
+        ></lightning-input>
+      </div>
+
+      <div class="slds-grid slds-gutters slds-m-bottom_medium">
+        <div class="slds-col">
+          <lightning-input
+            required
+            type="date"
+            label="Start Date"
+            name="startDate"
+            value={startDate}
+            onchange={inputChangeHandler}
+          ></lightning-input>
+        </div>
+        <div class="slds-col">
+          <lightning-input
+            required
+            type="date"
+            label="End Date"
+            name="endDate"
+            value={endDate}
+            onchange={inputChangeHandler}
+          ></lightning-input>
+        </div>
+      </div>
+
+      <!-- 3. Priority (combobox) -->
+      <div class="slds-m-bottom_medium">
+        <lightning-combobox
+          name="priority"
+          label="Priority"
+          value={priority}
+          options={priorityOptions}
+          onchange={inputChangeHandler}
+        >
+        </lightning-combobox>
+      </div>
+
+      <!-- 4. Milestones Number -->
+      <div class="slds-grid slds-gutters slds-m-bottom_medium">
+        <div class="slds-col slds-size_1-of-2">
+          <lightning-input
+            type="number"
+            label="Milestones Number"
+            name="milestoneNumber"
+            value={projectData.milestoneNumber}
+            onchange={inputChangeHandler}
+          >
+          </lightning-input>
+        </div>
+        <div class="slds-col slds-size_1-of-2"></div>
+      </div>
+
+      <!-- 5. Description (rich text) -->
+      <div>
+        <lightning-input-rich-text
+          label="Description"
+          name="description"
+          value={description}
+          onchange={inputChangeHandler}
+          placeholder="What is the project about?"
+        >
+        </lightning-input-rich-text>
+      </div>
+    </div>
+  </lightning-card>
+</template>

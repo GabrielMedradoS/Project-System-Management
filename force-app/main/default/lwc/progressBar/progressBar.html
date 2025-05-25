@@ -1,0 +1,121 @@
+<template>
+  <lightning-card>
+    <template if:true={isLoading}>
+      <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </template>
+
+    <lightning-layout class="slds-p-around_x-small">
+      <!-- CONNECTED PATH -->
+      <lightning-layout-item flexibility="grow">
+        <lightning-progress-indicator
+          current-step={currentStep}
+          type="base"
+          variant="base"
+        >
+          <lightning-progress-step
+            label={steps.project.label}
+            value={steps.project.value}
+          ></lightning-progress-step>
+          <lightning-progress-step
+            label={steps.milestone.label}
+            value={steps.milestone.value}
+          ></lightning-progress-step>
+          <lightning-progress-step
+            label={steps.tasks.label}
+            value={steps.tasks.value}
+          ></lightning-progress-step>
+          <lightning-progress-step
+            label={steps.summary.label}
+            value={steps.summary.value}
+          ></lightning-progress-step>
+        </lightning-progress-indicator>
+
+        <!-- STEPS FORM -->
+        <lightning-layout
+          class="slds-p-around_x-small"
+          vertical-align="start"
+          multiple-rows
+        >
+          <!-- STEP 1 -->
+          <lightning-layout-item size="12">
+            <template lwc:if={projectStepDetails}>
+              <c-project-management-form
+                oneventprojectdata={projectHandleChange}
+              ></c-project-management-form>
+            </template>
+          </lightning-layout-item>
+
+          <!-- STEP 2 -->
+          <lightning-layout-item size="12">
+            <template lwc:if={milestoneStepDetails}>
+              <c-milestone-managment-form
+                project-data={projectData}
+                oneventmilestonedata={milestoneHandleChange}
+              ></c-milestone-managment-form>
+            </template>
+          </lightning-layout-item>
+
+          <!-- STEP 3 -->
+          <lightning-layout-item size="12">
+            <template lwc:if={tasksStepDetails}>
+              <c-tasks-management-form
+                milestone-data={milestoneData}
+                oneventtaskdata={taskHandleChange}
+              >
+              </c-tasks-management-form>
+            </template>
+          </lightning-layout-item>
+
+          <!-- STEP 4 -->
+          <!-- <template lwc:if={summaryStepDetails}>
+            <c-summary-management-form
+              project-data={projectData}
+              milestone-data={milestoneData}
+            ></c-summary-management-form>
+          </template> -->
+
+          <!-- BUTTONS -->
+          <lightning-layout-item size="12" class="slds-p-around_medium">
+            <div class="slds-grid slds-grid_align-spread">
+              <lightning-button
+                label="Previous"
+                variant="brand"
+                type="button"
+                onclick={previousStep}
+                disabled={disablePrevious}
+              >
+              </lightning-button>
+
+              <template if:false={tasksStepDetails}>
+                <lightning-button
+                  label="Next"
+                  variant="brand"
+                  type="button"
+                  onclick={nextStep}
+                  disabled={disabledNext}
+                >
+                </lightning-button>
+              </template>
+              <template if:true={tasksStepDetails}>
+                <lightning-button
+                  label="Submit"
+                  variant="brand"
+                  type="button"
+                  onclick={handleSubmit}
+                >
+                </lightning-button>
+              </template>
+            </div>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+    </lightning-layout>
+
+    <!-- TOAST ERROR -->
+    <!-- <lightning-layout>
+    <template lwc:if={order.error}
+      >{myLabel.CL_LWC_Error_Loading_Simulation_Date} {order.error}
+    </template>
+  </lightning-layout> -->
+  </lightning-card>
+</template>
