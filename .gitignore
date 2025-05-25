@@ -6,7 +6,7 @@ deploy-options.json
 config
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
-
+.husky
 # LWC Jest coverage reports
 coverage/
 jestConfig.js
