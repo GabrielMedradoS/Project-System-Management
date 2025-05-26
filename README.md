@@ -65,11 +65,6 @@ Para instalar as dependências e executar o projeto terá que ter instalado em s
 Instale as dependências usando **npm**:
 
 ```bash
-# pnpm
-pnpm install
-```
-
-```bash
 # npm
 npm install
 ```
@@ -81,11 +76,7 @@ Execute o projeto:
 npm run dev
 ```
 
-O servidor estará disponível em http://localhost:3000.
-
-## 🛠 Tecnologias
-
-![My Skills](https://skillicons.dev/icons?i=ts,react,nodejs,tailwind)
+Entre em uma Org Salesforce
 
 ## 📜 Documentação
 
@@ -142,8 +133,8 @@ O servidor estará disponível em http://localhost:3000.
 
 </details>
 
-- [Next.js 13 | documentation](https://nextjs.org/docs)
-- [shadcn/ui | documentation](https://ui.shadcn.com/)
+- [Salesforce | documentation](https://developer.salesforce.com/docs)
+- [Trailhead | documentation](https://trailhead.salesforce.com/pt-BR/today)
 
 ## 💡 Como contribuir
 

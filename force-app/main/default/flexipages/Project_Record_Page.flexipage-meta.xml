@@ -4,16 +4,19 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>collapsed</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableActionsConfiguration</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableActionsInNative</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
@@ -85,8 +88,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PercentCompleted__c</fieldItem>
-                <identifier>RecordPercentCompleted_cField</identifier>
+                <fieldItem>Record.Account__c</fieldItem>
+                <identifier>RecordAccount__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -95,8 +98,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.Status__c</fieldItem>
-                <identifier>RecordStatus__cField</identifier>
+                <fieldItem>Record.Category__c</fieldItem>
+                <identifier>RecordCategory__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-e20fd8d2-8ef7-40b4-8d87-2938d57f39cb</name>
@@ -111,6 +114,26 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Priority__c</fieldItem>
                 <identifier>RecordPriority_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Budget__c</fieldItem>
+                <identifier>RecordBudget__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Expenses__c</fieldItem>
+                <identifier>RecordExpenses__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-2a501067-75ae-44d9-9fb2-08ec4f4f4a96</name>
@@ -138,6 +161,58 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-caf467cc-5b4d-4146-bb8d-708b11c5b545</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Status__c</fieldItem>
+                <identifier>RecordStatus__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-4958cb88-9c64-4421-a098-7546fea692cc</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PercentCompleted__c</fieldItem>
+                <identifier>RecordPercentCompleted_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-20a6dd25-c7bb-4758-bcfd-d43006ca8853</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-4958cb88-9c64-4421-a098-7546fea692cc</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-20a6dd25-c7bb-4758-bcfd-d43006ca8853</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-f073910d-6a43-442e-a2e0-79fcb8b31319</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -297,6 +372,24 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
+                    <value>Facet-f073910d-6a43-442e-a2e0-79fcb8b31319</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Progression</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
                     <value>Facet-1d85d2c0-421b-4645-99ca-4924b3ac9d13</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -445,24 +538,6 @@
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
                 <identifier>lst_dynamicRelatedList</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListContainer</componentName>
-                <identifier>force_relatedListContainer2</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

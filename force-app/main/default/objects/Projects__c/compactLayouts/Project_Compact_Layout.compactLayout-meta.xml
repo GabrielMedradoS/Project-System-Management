@@ -4,5 +4,7 @@
     <fields>ProjectTitle__c</fields>
     <fields>Priority__c</fields>
     <fields>Name</fields>
+    <fields>PercentCompleted__c</fields>
+    <fields>Budget__c</fields>
     <label>Project Compact Layout</label>
 </CompactLayout>

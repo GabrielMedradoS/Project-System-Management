@@ -89,6 +89,16 @@
                 <identifier>RecordDueDate_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.testStatus__c</fieldItem>
+                <identifier>RecordtestStatus__cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-73606e67-34df-4d79-abda-6d5e130b65e8</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -356,6 +366,16 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListContainer</componentName>
+                <identifier>force_relatedListContainer</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
