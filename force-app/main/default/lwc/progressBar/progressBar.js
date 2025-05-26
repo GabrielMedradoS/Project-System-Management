@@ -1,7 +1,7 @@
 import { LightningElement, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
-import createProjectMilestonesTasks from "@salesforce/apex/ProjectCreationService.createProjectMilestonesTasks";
+import processFromJSON from "@salesforce/apex/ProjectMilestoneTaskProcessor.processFromJSON";
 
 export default class ProgressBar extends LightningElement {
   @track isLoading = false;
@@ -69,7 +69,6 @@ export default class ProgressBar extends LightningElement {
     if (this.currentStep === "projectStepDetails") {
       const cmp = this.template.querySelector("c-project-management-form");
       if (cmp && cmp.validateInputs()) {
-        console.log("projectData " + this.projectData);
         this.currentStep = this.steps.milestone.value;
       }
     }
@@ -77,7 +76,6 @@ export default class ProgressBar extends LightningElement {
     if (this.currentStep === "milestoneStepDetails") {
       const cmp = this.template.querySelector("c-milestone-managment-form");
       if (cmp && cmp.validateInputs()) {
-        console.log("milestoneData " + this.milestoneData);
         this.currentStep = this.steps.tasks.value;
       }
     }
@@ -124,8 +122,10 @@ export default class ProgressBar extends LightningElement {
   }
 
   createProjectRecord(payload) {
-    createProjectMilestonesTasks({ data: payload })
-      .then(() => {
+    processFromJSON({ data: payload })
+      .then((result) => {
+        console.log(JSON.stringify(result.data));
+        console.log(result.data);
         this.dispatchEvent(
           new ShowToastEvent({
             title: "Success",
@@ -133,6 +133,7 @@ export default class ProgressBar extends LightningElement {
             variant: "success"
           })
         );
+        this.isLoading = false;
       })
       .catch((error) => {
         console.error(error);
@@ -143,7 +144,6 @@ export default class ProgressBar extends LightningElement {
             variant: "error"
           })
         );
-        this.showSpinner = false;
       });
   }
 }

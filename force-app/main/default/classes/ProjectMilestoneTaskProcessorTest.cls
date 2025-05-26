@@ -6,6 +6,7 @@ public class ProjectMilestoneTaskProcessorTest {
       '{\n' +
       '  "milestoneNumber": "3",\n' +
       '  "title": "Test Project",\n' +
+      '  "description": "Test description",\n' +
       '  "startDate": "2025-05-19",\n' +
       '  "endDate": "2025-05-20",\n' +
       '  "milestones": [\n' +
@@ -55,11 +56,12 @@ public class ProjectMilestoneTaskProcessorTest {
 
     // ****** VERIFY RECORDS ******
     Projects__c project = [
-      SELECT Id, ProjectTitle__c
+      SELECT Id, ProjectTitle__c, Description__c
       FROM Projects__c
       WHERE Id = :result.projectId
     ];
     System.assertEquals('Test Project', project.ProjectTitle__c);
+    System.assertEquals('Test description', project.Description__c);
 
     List<Milestones__c> milestones = [
       SELECT Id, Name, Type__c, ProjectId__c

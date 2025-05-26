@@ -17,26 +17,27 @@ export default class tasksManagementForm extends LightningElement {
 
   handleAddTask(event) {
     const milestoneId = parseInt(event.target.dataset.id, 10);
-    const newTask = {
-      name: "",
-      dueDate: ""
-    };
-
     this.milestoneDataStorage = this.milestoneDataStorage.map((mile) => {
       if (mile.id === milestoneId) {
+        const newTask = {
+          subject: "",
+          dueDate: ""
+        };
+
         return {
           ...mile,
           tasks: [...mile.tasks, newTask]
         };
       }
-
+      console.log("handleAddTask " + JSON.stringify(mile));
       return mile;
     });
   }
 
   handleTaskChange(event) {
     const milestoneId = parseInt(event.target.dataset.id, 10);
-    const index = parseInt(event.target.dataset.taskId, 10);
+    const index = parseInt(event.target.dataset.index, 10);
+
     const fieldName = event.target.name;
     const fieldValue = event.target.value;
 
@@ -49,10 +50,7 @@ export default class tasksManagementForm extends LightningElement {
         };
 
         console.log("handleTaskChange 1" + JSON.stringify(mile));
-        return {
-          ...mile,
-          tasks: updatedTasks
-        };
+        return { ...mile, tasks: updatedTasks };
       }
 
       console.log("handleTaskChange 2" + JSON.stringify(mile));
@@ -62,7 +60,7 @@ export default class tasksManagementForm extends LightningElement {
 
   handleRemoveTask(event) {
     const milestoneId = parseInt(event.target.dataset.id, 10);
-    const index = parseInt(event.target.dataset.taskId, 10);
+    const index = parseInt(event.target.dataset.index, 10);
 
     this.milestoneDataStorage = this.milestoneDataStorage.map((mile) => {
       if (mile.id === milestoneId) {

@@ -14,7 +14,8 @@ public class ProjectMilestoneTaskProcessor {
   }
 
   @AuraEnabled
-  public static ProcessResult processFromJSON(String jsonString) {
+  public static ProcessResult processFromJSON(Map<String, Object> data) {
+    String jsonString = (String) JSON.serializePretty(data);
     return processProjectData(jsonString);
   }
 
@@ -65,14 +66,13 @@ public class ProjectMilestoneTaskProcessor {
       }
 
       result.success = true;
-      result.message = 'Successfully created ' + result.projectId != null
-        ? '1'
-        : '0' +
-          ' Project, ' +
-          result.milestones.size() +
-          ' Milestones, ' +
-          result.tasks.size() +
-          ' Tasks';
+      result.message =
+        'Successfully created ' +
+        '1 Project, ' +
+        result.milestones.size() +
+        ' Milestones, ' +
+        result.tasks.size() +
+        ' Tasks';
     } catch (Exception e) {
       result.success = false;
       result.message = 'Error processing project data: ' + e.getMessage();
