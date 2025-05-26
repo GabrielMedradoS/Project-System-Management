@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>*</members>
+		<name>GlobalValueSet</name>
+	</types>
+	<types>
+		<members>Projects__c.Project_Compact_Layout</members>
+		<members>Milestones__c.Milestone_Compact_Layout</members>
+		<name>CompactLayout</name>
+	</types>
+	<types>
+		<members>Project_Status_Path</members>
+		<members>Milestone_Status_Path</members>
+		<name>PathAssistant</name>
+	</types>
+	<types>
+		<members>approvalManagementForm</members>
+		<members>milestoneManagmentForm</members>
+		<members>progressBar</members>
+		<members>projectManagementForm</members>
+		<members>tasksManagementForm</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
 		<members>MilestoneWrapper</members>
-		<members>ProjectCreationController</members>
 		<members>ProjectMilestoneTaskProcessor</members>
 		<members>ProjectMilestoneTaskProcessorTest</members>
 		<members>ProjectWrapper</members>
 		<members>TaskWrapper</members>
 		<name>ApexClass</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>GlobalValueSet</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>PathAssistant</name>
-	</types>
-	<types>
-		<members>*</members>
-		<name>CompactLayout</name>
 	</types>
 	<types>
 		<members>image_branding</members>

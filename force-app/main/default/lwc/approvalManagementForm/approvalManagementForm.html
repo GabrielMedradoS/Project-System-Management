@@ -1,0 +1,100 @@
+<template>
+  <lightning-card title="" icon-name="">
+    <div class="slds-align_absolute-center slds-p-around_medium">
+      <div class="slds-text-align_center">
+        <!-- Success Icon -->
+        <div class="slds-m-bottom_large">
+          <lightning-icon
+            icon-name="action:approval"
+            alternative-text="Success"
+            size="large"
+            variant="success"
+          >
+          </lightning-icon>
+        </div>
+
+        <!-- Success Message -->
+        <h2
+          class="slds-text-heading_large slds-text-color_success slds-m-bottom_medium"
+        >
+          Project Created Successfully!
+        </h2>
+
+        <!-- Project Details -->
+        <div
+          class="slds-box slds-theme_shade slds-m-bottom_large"
+          style="max-width: 500px"
+        >
+          <h3 class="slds-text-heading_small slds-m-bottom_small">
+            Project Details
+          </h3>
+          <div class="slds-text-align_left">
+            <dl class="slds-list_horizontal slds-wrap">
+              <dt class="slds-item_label slds-text-color_weak slds-size_1-of-3">
+                Project Name:
+              </dt>
+              <dd class="slds-item_detail slds-size_2-of-3">
+                <strong>{projectCreatedInfo.projectTitle}</strong>
+              </dd>
+
+              <!-- <dt
+                  class="slds-item_label slds-text-color_weak slds-size_1-of-3"
+                >
+                  Project Manager:
+                </dt>
+                <dd class="slds-item_detail slds-size_2-of-3">Gerente</dd> -->
+
+              <!-- <dt
+                  class="slds-item_label slds-text-color_weak slds-size_1-of-3"
+                >
+                  Duration:
+                </dt>
+                <dd class="slds-item_detail slds-size_2-of-3">duraçao</dd> -->
+
+              <dt class="slds-item_label slds-text-color_weak slds-size_1-of-3">
+                Milestones:
+              </dt>
+              <dd class="slds-item_detail slds-size_2-of-3">
+                {projectCreatedInfo.milestones}
+              </dd>
+
+              <dt class="slds-item_label slds-text-color_weak slds-size_1-of-3">
+                Total Tasks:
+              </dt>
+              <dd class="slds-item_detail slds-size_2-of-3">
+                {projectCreatedInfo.tasks}
+              </dd>
+
+              <!-- <dt
+                  class="slds-item_label slds-text-color_weak slds-size_1-of-3"
+                >
+                  Estimated Hours:
+                </dt>
+                <dd class="slds-item_detail slds-size_2-of-3">Horas</dd> -->
+            </dl>
+          </div>
+        </div>
+
+        <!-- Success Actions -->
+        <!-- <div class="slds-grid slds-grid_align-center slds-gutters">
+            <div class="slds-col">
+              <lightning-button
+                label="View Project"
+                variant="brand"
+                onclick={handleViewProject}
+                class="slds-m-right_small"
+              >
+              </lightning-button>
+
+              <lightning-button
+                label="Create Another Project"
+                variant="neutral"
+                onclick={handleCreateAnother}
+              >
+              </lightning-button>
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </lightning-card>
+</template>

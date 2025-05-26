@@ -1,15 +1,21 @@
 public class ProjectMilestoneTaskProcessor {
   public class ProcessResult {
+    @AuraEnabled
     public Boolean success;
+    @AuraEnabled
     public String message;
-    public String projectId;
+    @AuraEnabled
+    public String projectTitle;
+    @AuraEnabled
     public String errorDetails;
-    public List<Milestones__c> milestones;
-    public List<Task> tasks;
+    @AuraEnabled
+    public String milestones;
+    @AuraEnabled
+    public String tasks;
 
     public ProcessResult() {
-      this.milestones = new List<Milestones__c>();
-      this.tasks = new List<Task>();
+      this.milestones = '';
+      this.tasks = '';
     }
   }
 
@@ -31,7 +37,7 @@ public class ProjectMilestoneTaskProcessor {
 
       Projects__c projectToInsert = projectData.getProject();
       insert projectToInsert;
-      result.projectId = projectToInsert.Id;
+      result.projectTitle = projectToInsert.ProjectTitle__c;
 
       List<MilestoneWrapper> milestoneListWrappers = projectData.getMilestones();
       List<Milestones__c> milestonesToInsert = new List<Milestones__c>();
@@ -45,7 +51,7 @@ public class ProjectMilestoneTaskProcessor {
 
       if (!milestonesToInsert.isEmpty()) {
         insert milestonesToInsert;
-        result.milestones = milestonesToInsert;
+        result.milestones = String.valueOf(milestonesToInsert.size());
       }
 
       List<Task> allTasksToInsert = new List<Task>();
@@ -59,19 +65,18 @@ public class ProjectMilestoneTaskProcessor {
         }
       }
 
-      result.tasks = allTasksToInsert;
-
       if (!allTasksToInsert.isEmpty()) {
         insert allTasksToInsert;
+        result.tasks = String.valueOf(allTasksToInsert.size());
       }
 
       result.success = true;
       result.message =
         'Successfully created ' +
         '1 Project, ' +
-        result.milestones.size() +
+        result.milestones +
         ' Milestones, ' +
-        result.tasks.size() +
+        result.tasks +
         ' Tasks';
     } catch (Exception e) {
       result.success = false;

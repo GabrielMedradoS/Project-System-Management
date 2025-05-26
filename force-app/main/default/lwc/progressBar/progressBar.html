@@ -24,10 +24,10 @@
             label={steps.tasks.label}
             value={steps.tasks.value}
           ></lightning-progress-step>
-          <!-- <lightning-progress-step
-            label={steps.summary.label}
-            value={steps.summary.value}
-          ></lightning-progress-step> -->
+          <lightning-progress-step
+            label={steps.approved.label}
+            value={steps.approved.value}
+          ></lightning-progress-step>
         </lightning-progress-indicator>
 
         <!-- STEPS FORM -->
@@ -67,12 +67,13 @@
           </lightning-layout-item>
 
           <!-- STEP 4 -->
-          <!-- <template lwc:if={summaryStepDetails}>
-            <c-summary-management-form
-              project-data={projectData}
-              milestone-data={milestoneData}
-            ></c-summary-management-form>
-          </template> -->
+          <lightning-layout-item size="12">
+            <template lwc:if={approvedProjectStepDetails}>
+              <c-approval-management-form
+                project-created-info={projectCreatedInfo}
+              ></c-approval-management-form>
+            </template>
+          </lightning-layout-item>
 
           <!-- BUTTONS -->
           <lightning-layout-item size="12" class="slds-p-around_medium">

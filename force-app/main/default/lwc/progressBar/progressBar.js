@@ -8,7 +8,7 @@ export default class ProgressBar extends LightningElement {
   @track currentStep = "projectStepDetails";
   @track projectData;
   @track milestoneData;
-  @track data;
+  @track projectCreatedInfo;
 
   steps = {
     project: {
@@ -23,18 +23,21 @@ export default class ProgressBar extends LightningElement {
       label: "Tasks Details",
       value: "tasksStepDetails"
     },
-    summary: {
-      label: "Summary",
-      value: "summaryStepDetails"
+    approved: {
+      label: "Approved Project",
+      value: "approvedProjectStepDetails"
     }
   };
 
   get disablePrevious() {
-    return this.currentStep === "projectStepDetails";
+    return (
+      this.currentStep === "projectStepDetails" ||
+      this.currentStep === "approvedProjectStepDetails"
+    );
   }
 
   get disabledNext() {
-    return this.currentStep === "summaryStepDetails";
+    return this.currentStep === "approvedProjectStepDetails";
   }
 
   get projectStepDetails() {
@@ -49,8 +52,8 @@ export default class ProgressBar extends LightningElement {
     return this.currentStep === "tasksStepDetails";
   }
 
-  get summaryStepDetails() {
-    return this.currentStep === "summaryStepDetails";
+  get approvedProjectStepDetails() {
+    return this.currentStep === "approvedProjectStepDetails";
   }
 
   previousStep() {
@@ -59,9 +62,6 @@ export default class ProgressBar extends LightningElement {
     }
     if (this.currentStep === "tasksStepDetails") {
       this.currentStep = this.steps.milestone.value;
-    }
-    if (this.currentStep === "summaryStepDetails") {
-      this.currentStep = this.steps.tasks.value;
     }
   }
 
@@ -79,14 +79,6 @@ export default class ProgressBar extends LightningElement {
         this.currentStep = this.steps.tasks.value;
       }
     }
-
-    // if (this.currentStep === "tasksStepDetails") {
-    //   const cmp = this.template.querySelector("c-tasks-management-form");
-    //   if (cmp && cmp.validateInputs()) {
-    //     console.log("milestoneDataTasks " + this.milestoneData);
-    //     this.currentStep = this.steps.summary.value;
-    //   }
-    // }
   }
 
   projectHandleChange(event) {
@@ -102,11 +94,6 @@ export default class ProgressBar extends LightningElement {
   taskHandleChange(event) {
     this.milestoneData = event.detail;
     console.log("milestoneDataTasks: ", JSON.stringify(this.milestoneData));
-
-    if (this.projectData && this.milestoneData) {
-      const data = { ...this.projectData, milestones: this.milestoneData };
-      console.log("Joined Summary: ", JSON.stringify(data));
-    }
   }
 
   handleSubmit() {
@@ -124,22 +111,25 @@ export default class ProgressBar extends LightningElement {
   createProjectRecord(payload) {
     processFromJSON({ data: payload })
       .then((result) => {
-        console.log(JSON.stringify(result.data));
-        console.log(result.data);
+        console.log("result " + JSON.stringify(result));
+        this.projectCreatedInfo = result;
+
         this.dispatchEvent(
           new ShowToastEvent({
             title: "Success",
-            message: "Order created",
+            message: result.message,
             variant: "success"
           })
         );
         this.isLoading = false;
+        this.currentStep = this.steps.approved.value;
       })
       .catch((error) => {
+        console.error("Apex call error:", error);
         console.error(error);
         this.dispatchEvent(
           new ShowToastEvent({
-            title: "Error",
+            title: "Apex Error",
             message: error.body.message,
             variant: "error"
           })
