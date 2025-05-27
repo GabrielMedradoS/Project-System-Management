@@ -16,8 +16,8 @@ export default class MilestoneManagmentForm extends LightningElement {
 
     this.milestoneData = Array.from({ length: count }, (_, i) => ({
       id: i,
-      name: `Milestone ${i + 1}`,
-      type: `${this.getOrdinal(i + 1)} Milestone`,
+      name: `${this.getOrdinal(i + 1)} Milestone`,
+      type: i + 1,
       dueDate: null,
       tasksCheckbox: false,
       tasks: []

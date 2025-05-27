@@ -1,7 +1,7 @@
 public with sharing class MilestoneWrapper {
   public Integer id { get; set; }
   public String name { get; set; }
-  public String type { get; set; }
+  public Decimal type { get; set; }
   public String dueDate { get; set; }
   public Boolean tasksCheckbox { get; set; }
   public List<TaskWrapper> tasks { get; set; }
