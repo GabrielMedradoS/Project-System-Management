@@ -1,15 +1,16 @@
 public with sharing class MilestoneWrapper {
-  public Integer id { get; set; }
+  @AuraEnabled
   public String name { get; set; }
+  @AuraEnabled
   public Decimal type { get; set; }
+  @AuraEnabled
   public String dueDate { get; set; }
-  public Boolean tasksCheckbox { get; set; }
+  @AuraEnabled
   public List<TaskWrapper> tasks { get; set; }
 
-  public Milestones__c getMilestone(String projectId) {
+  public Milestones__c getMilestone() {
     Milestones__c mile = new Milestones__c();
     mile.Name = this.name;
-    mile.ProjectId__c = projectId;
     mile.Type__c = this.type;
     mile.DueDate__c = Date.valueOf(this.dueDate);
 

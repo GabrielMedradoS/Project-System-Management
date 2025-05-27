@@ -162,7 +162,6 @@ public with sharing class MilestoneController {
         System.debug(
           'Error updating project completion percentages: ' + e.getMessage()
         );
-        // Handle the exception as per your org's error handling strategy
       }
     }
   }

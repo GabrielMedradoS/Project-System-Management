@@ -18,6 +18,7 @@
 		<members>MilestoneControllerTest</members>
 		<members>MilestoneTriggerHandler</members>
 		<members>MilestoneWrapper</members>
+		<members>ProjectController</members>
 		<members>ProjectMilestoneTaskProcessor</members>
 		<members>ProjectMilestoneTaskProcessorTest</members>
 		<members>ProjectWrapper</members>

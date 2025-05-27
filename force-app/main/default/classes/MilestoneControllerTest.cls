@@ -34,7 +34,6 @@ public class MilestoneControllerTest {
 
   @isTest
   static void testValidateStatusTransitions_ValidTransition() {
-    // Test valid status transition (should not throw error)
     List<Milestones__c> milestones = [
       SELECT Id, Status__c, ProjectId__c
       FROM Milestones__c
@@ -55,7 +54,6 @@ public class MilestoneControllerTest {
         milestones,
         oldMilestoneMap
       );
-      // If no exception is thrown, the test passes
       Assert.areEqual(
         'In Progress',
         milestones[0].Status__c,
@@ -71,7 +69,6 @@ public class MilestoneControllerTest {
 
   @isTest
   static void testGetStatusChangedMilestones_WithChanges() {
-    // Test getting milestones with status changes
     List<Milestones__c> milestones = [
       SELECT Id, Status__c, ProjectId__c
       FROM Milestones__c
@@ -79,7 +76,6 @@ public class MilestoneControllerTest {
     ];
     Map<Id, Milestones__c> oldMilestoneMap = new Map<Id, Milestones__c>();
 
-    // Create old versions with different status
     for (Milestones__c milestone : milestones) {
       Milestones__c oldMilestone = milestone.clone(true);
       oldMilestone.Status__c = 'In Progress';
@@ -102,7 +98,6 @@ public class MilestoneControllerTest {
 
   @isTest
   static void testGetStatusChangedMilestones_NoChanges() {
-    // Test getting milestones with no status changes
     List<Milestones__c> milestones = [
       SELECT Id, Status__c, ProjectId__c
       FROM Milestones__c
@@ -110,7 +105,6 @@ public class MilestoneControllerTest {
     ];
     Map<Id, Milestones__c> oldMilestoneMap = new Map<Id, Milestones__c>();
 
-    // Create old versions with same status
     for (Milestones__c milestone : milestones) {
       Milestones__c oldMilestone = milestone.clone(true);
       oldMilestone.Status__c = milestone.Status__c;
@@ -133,7 +127,6 @@ public class MilestoneControllerTest {
 
   @isTest
   static void testUpdateProjectCompletionPercentage_WithMilestones() {
-    // Test project completion percentage update
     List<Milestones__c> milestones = [
       SELECT Id, ProjectId__c
       FROM Milestones__c
@@ -144,7 +137,6 @@ public class MilestoneControllerTest {
     MilestoneController.updateProjectCompletionPercentage(milestones);
     Test.stopTest();
 
-    // Verify that project completion percentages were updated
     List<Projects__c> updatedProjects = [
       SELECT Id, PercentCompleted__c
       FROM Projects__c
@@ -165,7 +157,6 @@ public class MilestoneControllerTest {
 
   @isTest
   static void testBulkOperations() {
-    // Test bulk operations with multiple milestones
     List<Milestones__c> allMilestones = [
       SELECT Id, Status__c, IsActive__c, ProjectId__c
       FROM Milestones__c
@@ -175,19 +166,17 @@ public class MilestoneControllerTest {
     // Create old milestone map
     for (Milestones__c milestone : allMilestones) {
       Milestones__c oldMilestone = milestone.clone(true);
-      oldMilestone.Status__c = 'In Progress'; // Different status to simulate change
+      oldMilestone.Status__c = 'In Progress';
       oldMilestoneMap.put(milestone.Id, oldMilestone);
     }
 
     Test.startTest();
 
-    // Test bulk status change detection
     List<Milestones__c> changedMilestones = MilestoneController.getStatusChangedMilestones(
       allMilestones,
       oldMilestoneMap
     );
 
-    // Test bulk project completion update
     MilestoneController.updateProjectCompletionPercentage(allMilestones);
 
     Test.stopTest();
@@ -197,7 +186,6 @@ public class MilestoneControllerTest {
       'Should detect status changes in bulk operations'
     );
 
-    // Verify projects were updated
     List<Projects__c> updatedProjects = [
       SELECT Id, PercentCompleted__c
       FROM Projects__c
@@ -212,8 +200,6 @@ public class MilestoneControllerTest {
 
   @isTest
   static void testErrorHandling_DmlException() {
-    // This test simulates DML exception handling in updateProjectPercentageRecords
-    // Note: It's difficult to force a DML exception in test context, but we can test the method structure
     List<Milestones__c> milestones = [
       SELECT Id, ProjectId__c
       FROM Milestones__c
@@ -223,9 +209,7 @@ public class MilestoneControllerTest {
     Test.startTest();
     try {
       MilestoneController.updateProjectCompletionPercentage(milestones);
-      // The method should handle any DML exceptions gracefully
     } catch (Exception e) {
-      // If an exception occurs, it should be handled within the method
       Assert.fail(
         'Method should handle DML exceptions internally: ' + e.getMessage()
       );

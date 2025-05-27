@@ -2,7 +2,6 @@ public class MilestoneTriggerHandler {
   // Static variable to prevent recursive trigger calls
   private static Boolean isExecuting = false;
 
-  // Main entry point for all trigger contexts
   public static void execute() {
     // Prevent recursive calls
     if (isExecuting) {
@@ -12,7 +11,6 @@ public class MilestoneTriggerHandler {
     isExecuting = true;
 
     try {
-      // Handle different trigger contexts
       if (Trigger.isBefore) {
         if (Trigger.isInsert) {
           beforeInsert(Trigger.new);
@@ -56,7 +54,6 @@ public class MilestoneTriggerHandler {
         ' records'
     );
 
-    // Validate status transitions, update fields, etc.
     MilestoneController.validateStatusTransitions(
       newMilestones,
       oldMilestoneMap
@@ -83,7 +80,6 @@ public class MilestoneTriggerHandler {
         ' records'
     );
 
-    // Update project completion percentage after new milestones are added
     MilestoneController.updateProjectCompletionPercentage(newMilestones);
   }
 
@@ -101,14 +97,12 @@ public class MilestoneTriggerHandler {
         ' records'
     );
 
-    // Filter milestones where status has changed
     List<Milestones__c> statusChangedMilestones = MilestoneController.getStatusChangedMilestones(
       newMilestones,
       oldMilestoneMap
     );
 
     if (!statusChangedMilestones.isEmpty()) {
-      // Update project completion percentage
       MilestoneController.updateProjectCompletionPercentage(
         statusChangedMilestones
       );
@@ -123,7 +117,6 @@ public class MilestoneTriggerHandler {
         ' records'
     );
 
-    // Update project completion percentage after milestones are deleted
     MilestoneController.updateProjectCompletionPercentage(oldMilestones);
   }
 

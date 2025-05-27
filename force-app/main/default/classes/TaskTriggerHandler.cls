@@ -2,7 +2,6 @@ public with sharing class TaskTriggerHandler {
   // Static variable to prevent recursive trigger calls
   private static Boolean isExecuting = false;
 
-  // Main entry point for all trigger contexts
   public static void execute() {
     // Prevent recursive calls
     if (isExecuting) {
@@ -12,7 +11,6 @@ public with sharing class TaskTriggerHandler {
     isExecuting = true;
 
     try {
-      // Handle different trigger contexts
       if (Trigger.isBefore) {
         if (Trigger.isInsert) {
           beforeInsert(Trigger.new);
@@ -54,7 +52,6 @@ public with sharing class TaskTriggerHandler {
         ' records'
     );
 
-    // Validate status transitions, update fields, etc.
     TaskController.validateStatusTransitions(newTasks, oldTaskMap);
   }
 
@@ -66,7 +63,6 @@ public with sharing class TaskTriggerHandler {
         ' records'
     );
 
-    //Prevent deletion of critical milestones
     TaskController.preventCriticalTaskDeletion(oldTasks);
   }
 
@@ -78,7 +74,6 @@ public with sharing class TaskTriggerHandler {
         ' records'
     );
 
-    // Update project completion percentage after new milestones are added
     TaskController.updateMilestoneCompletionPercentage(newTasks);
   }
 
@@ -94,14 +89,12 @@ public with sharing class TaskTriggerHandler {
         ' records'
     );
 
-    // Filter milestones where status has changed
     List<Task> statusChangedMilestones = TaskController.getStatusChangedTasks(
       newTasks,
       oldTaskMap
     );
 
     if (!statusChangedMilestones.isEmpty()) {
-      // Update project completion percentage
       TaskController.updateMilestoneCompletionPercentage(
         statusChangedMilestones
       );
@@ -116,7 +109,6 @@ public with sharing class TaskTriggerHandler {
         ' records'
     );
 
-    // Update project completion percentage after milestones are deleted
     TaskController.updateMilestoneCompletionPercentage(oldTasks);
   }
 

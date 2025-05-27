@@ -1,0 +1,204 @@
+<template>
+  <lightning-card
+    title="Project Milestones Overview"
+    icon-name="standard:goals"
+  >
+    <!-- Loading Spinner -->
+    <template if:true={isLoading}>
+      <div class="slds-text-align_center slds-p-around_medium">
+        <lightning-spinner
+          alternative-text="Loading data..."
+          size="medium"
+        ></lightning-spinner>
+      </div>
+    </template>
+
+    <!-- Project Header Information -->
+    <div class="slds-card__body slds-card__body_inner">
+      <div class="slds-grid slds-wrap slds-gutters slds-m-bottom_medium">
+        <!-- Project Details Column -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3">
+          <h2
+            class="slds-text-heading_medium slds-m-bottom_x-small slds-text-align_center"
+          >
+            {projectData.name}
+          </h2>
+          <p
+            class="slds-text-body_regular slds-text-color_weak"
+            if:true={projectDescription}
+          >
+            {projectData.description}
+          </p>
+        </div>
+
+        <!-- Project Status Column -->
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+          <div class="slds-text-align_right">
+            <lightning-badge
+              label={projectStatus}
+              variant={statusVariant}
+            ></lightning-badge>
+            <div class="slds-m-top_x-small">
+              <p class="slds-text-body_small">Start: {projectData.startDate}</p>
+              <p class="slds-text-body_small">End: {projectData.endDate}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestones and Tasks Display -->
+      <div class="milestones-container">
+        <template for:each={milestonesData} for:item="milestoneWrapper">
+          <div
+            key={milestoneWrapper.milestone.Id}
+            class="milestone-card slds-box slds-m-bottom_medium"
+          >
+            <!-- Milestone Header -->
+            <div class="slds-grid slds-grid_align-spread slds-m-bottom_small">
+              <!-- Milestone Title Section -->
+              <div class="slds-col">
+                <h3 class="slds-text-heading_small slds-text-color_default">
+                  <lightning-icon
+                    icon-name="custom:custom53"
+                    size="x-small"
+                    class="slds-m-right_x-small"
+                  ></lightning-icon>
+                  {milestoneWrapper.milestone.Name}
+                </h3>
+                <template if:true={milestoneWrapper.milestone.Description__c}>
+                  <p
+                    class="slds-text-body_small slds-text-color_weak slds-m-top_x-small"
+                  >
+                    {milestoneWrapper.milestone.Description__c}
+                  </p>
+                </template>
+              </div>
+
+              <!-- Milestone Status Section -->
+              <div class="slds-col slds-no-flex">
+                <div class="slds-text-align_right">
+                  <lightning-badge
+                    label={milestoneWrapper.milestone.Status__c}
+                    variant="neutral"
+                  ></lightning-badge>
+
+                  <template if:true={milestoneWrapper.milestone.DueDate__c}>
+                    <p class="slds-text-body_small slds-m-top_x-small">
+                      Due:
+                      <lightning-formatted-date-time
+                        value={milestoneWrapper.milestone.DueDate__c}
+                        year="numeric"
+                        month="short"
+                        day="2-digit"
+                      ></lightning-formatted-date-time>
+                    </p>
+                  </template>
+
+                  <template
+                    if:true={milestoneWrapper.milestone.PercentCompleted__c}
+                  >
+                    <div class="slds-m-top_x-small">
+                      <span class="slds-text-body_small">
+                        {milestoneWrapper.milestone.PercentCompleted__c}%
+                        Complete
+                      </span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tasks List -->
+            <template if:true={milestoneWrapper.tasks}>
+              <div class="tasks-section">
+                <h4
+                  class="slds-text-heading_x-small slds-m-bottom_small slds-text-color_weak"
+                >
+                  Tasks ({milestoneWrapper.tasks.length})
+                </h4>
+
+                <!-- No Tasks Message -->
+                <template if:false={milestoneWrapper.tasks.length}>
+                  <p
+                    class="slds-text-body_small slds-text-color_weak slds-p-left_medium"
+                  >
+                    No tasks assigned to this milestone
+                  </p>
+                </template>
+
+                <!-- Tasks List -->
+                <template if:true={milestoneWrapper.tasks.length}>
+                  <ul class="slds-list_vertical slds-has-dividers_top-space">
+                    <template for:each={milestoneWrapper.tasks} for:item="task">
+                      <li
+                        key={task.Id}
+                        class="slds-list__item slds-p-vertical_x-small"
+                      >
+                        <div class="slds-grid slds-grid_align-spread">
+                          <!-- Task Details -->
+                          <div class="slds-col">
+                            <div
+                              class="slds-grid slds-grid_vertical-align-center"
+                            >
+                              <lightning-icon
+                                icon-name="standard:task"
+                                size="x-small"
+                                class="slds-m-right_x-small"
+                              ></lightning-icon>
+                              <div>
+                                <p class="slds-text-body_regular">
+                                  {task.Subject}
+                                </p>
+                                <template if:true={task.Owner.Name}>
+                                  <p
+                                    class="slds-text-body_small slds-text-color_weak"
+                                  >
+                                    Assigned to: {task.Owner.Name}
+                                  </p>
+                                </template>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!-- Task Status and Metadata -->
+                          <div class="slds-col slds-no-flex">
+                            <div class="slds-text-align_right">
+                              <lightning-badge
+                                label={task.Status}
+                                variant="neutral"
+                              ></lightning-badge>
+
+                              <template if:true={task.Priority}>
+                                <p
+                                  class="slds-text-body_small slds-m-top_xx-small"
+                                >
+                                  Priority: {task.Priority}
+                                </p>
+                              </template>
+
+                              <template if:true={task.ActivityDate}>
+                                <p class="slds-text-body_small">
+                                  Due:
+                                  <lightning-formatted-date-time
+                                    value={task.ActivityDate}
+                                    year="numeric"
+                                    month="short"
+                                    day="2-digit"
+                                  ></lightning-formatted-date-time>
+                                </p>
+                              </template>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </template>
+                  </ul>
+                </template>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+  </lightning-card>
+</template>

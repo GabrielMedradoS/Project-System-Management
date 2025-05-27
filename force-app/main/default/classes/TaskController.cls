@@ -6,7 +6,6 @@ public with sharing class TaskController {
     for (Task taskObj : newTasks) {
       Task oldTask = oldTaskMap.get(taskObj.Id);
 
-      // Example: Prevent changing from Completed to Not Started
       if (oldTask.Status == 'Completed' && taskObj.Status == 'Not Started') {
         taskObj.Status.addError(
           'Cannot change status from Completed to Not Started'
@@ -160,7 +159,6 @@ public with sharing class TaskController {
         System.debug(
           'Error updating project completion percentages: ' + e.getMessage()
         );
-        // Handle the exception as per your org's error handling strategy
       }
     }
   }

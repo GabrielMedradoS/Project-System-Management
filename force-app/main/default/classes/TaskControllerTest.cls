@@ -49,7 +49,6 @@ public with sharing class TaskControllerTest {
 
   @isTest
   static void testValidateStatusTransitions_ValidTransition() {
-    // Test valid status transition (should not throw error)
     List<Task> TasksList = [
       SELECT Id, Status, WhatId
       FROM Task
@@ -67,7 +66,6 @@ public with sharing class TaskControllerTest {
     Test.startTest();
     try {
       TaskController.validateStatusTransitions(TasksList, oldTasksMap);
-      // If no exception is thrown, the test passes
       Assert.areEqual(
         'In Progress',
         TasksList[0].Status,
@@ -83,7 +81,6 @@ public with sharing class TaskControllerTest {
 
   @isTest
   static void testGetStatusChangedTasks_WithChanges() {
-    // Test getting tasksList with status changes
     List<Task> tasksList = [
       SELECT Id, Status, WhatId
       FROM Task
@@ -92,7 +89,6 @@ public with sharing class TaskControllerTest {
 
     Map<Id, Task> oldTasksMap = new Map<Id, Task>();
 
-    // Create old versions with different status
     for (Task taskObj : tasksList) {
       Task oldTask = taskObj.clone(true);
       oldTask.Status = 'In Progress';
@@ -115,7 +111,6 @@ public with sharing class TaskControllerTest {
 
   @isTest
   static void testGetStatusChangedTasks_NoChanges() {
-    // Test getting tasksList with no status changes
     List<Task> tasksList = [
       SELECT Id, Status, WhatId
       FROM Task
@@ -123,7 +118,6 @@ public with sharing class TaskControllerTest {
     ];
     Map<Id, Task> oldTasksMap = new Map<Id, Task>();
 
-    // Create old versions with same status
     for (Task taskObj : tasksList) {
       Task oldTask = taskObj.clone(true);
       oldTask.Status = taskObj.Status;
@@ -146,7 +140,6 @@ public with sharing class TaskControllerTest {
 
   @isTest
   static void testUpdateMilestoneCompletionPercentage_WithTasks() {
-    // Test Milestone completion percentage update
     List<Task> tasksList = [
       SELECT Id, WhatId
       FROM Task
@@ -162,7 +155,6 @@ public with sharing class TaskControllerTest {
     TaskController.updateMilestoneCompletionPercentage(tasksList);
     Test.stopTest();
 
-    // Verify that milestone completion percentages were updated
     List<Milestones__c> updatedMilestones = [
       SELECT Id, PercentCompleted__c
       FROM Milestones__c
@@ -192,7 +184,7 @@ public with sharing class TaskControllerTest {
 
     for (Task taskObj : allTasks) {
       Task oldTask = taskObj.clone(true);
-      oldTask.Status = 'In Progress'; // Different status to simulate change
+      oldTask.Status = 'In Progress';
       oldTasksMap.put(taskObj.Id, oldTask);
     }
 
@@ -203,7 +195,6 @@ public with sharing class TaskControllerTest {
       oldTasksMap
     );
 
-    // Test bulk milestone completion update
     TaskController.updateMilestoneCompletionPercentage(allTasks);
 
     Test.stopTest();
@@ -213,7 +204,6 @@ public with sharing class TaskControllerTest {
       'Should detect status changes in bulk operations'
     );
 
-    // Verify milestones were updated
     List<Milestones__c> updatedMilestones = [
       SELECT Id, PercentCompleted__c
       FROM Milestones__c
