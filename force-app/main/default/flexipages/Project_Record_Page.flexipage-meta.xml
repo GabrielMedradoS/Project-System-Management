@@ -38,7 +38,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>variant</name>
-                    <value>non-linear</value>
+                    <value>linear</value>
                 </componentInstanceProperties>
                 <componentName>runtime_sales_pathassistant:pathAssistant</componentName>
                 <identifier>runtime_sales_pathassistant_pathAssistant</identifier>
