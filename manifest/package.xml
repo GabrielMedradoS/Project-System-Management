@@ -6,11 +6,13 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>TaskTriggerHandler</members>
+		<members>TaskController</members>
+		<members>TaskControllerTest</members>
 		<members>MilestoneController</members>
 		<members>MilestoneControllerTest</members>
 		<members>MilestoneTriggerHandler</members>
 		<members>MilestoneWrapper</members>
-		<members>ProjectCreationController</members>
 		<members>ProjectMilestoneTaskProcessor</members>
 		<members>ProjectMilestoneTaskProcessorTest</members>
 		<members>ProjectWrapper</members>

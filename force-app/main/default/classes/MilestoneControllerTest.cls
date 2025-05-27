@@ -69,129 +69,6 @@ public class MilestoneControllerTest {
     Test.stopTest();
   }
 
-  //  @isTest
-  //   static void testValidateStatusTransitions_InvalidTransition() {
-  //     // Test invalid status transition (Completed to Not Started)
-  //     List<Milestones__c> milestones = [
-  //       SELECT Id, Status__c, ProjectId__c
-  //       FROM Milestones__c
-  //       WHERE Status__c = 'Completed'
-  //       LIMIT 1
-  //     ];
-  //     Map<Id, Milestones__c> oldMilestoneMap = new Map<Id, Milestones__c>();
-
-  //     Milestones__c oldMilestone = milestones[0].clone(true);
-  //     oldMilestone.Status__c = 'Completed';
-  //     oldMilestoneMap.put(milestones[0].Id, oldMilestone);
-
-  //     milestones[0].Status__c = 'Not Started';
-
-  //     Test.startTest();
-  //     Boolean errorOccurred = false;
-  //     try {
-  //       MilestoneController.validateStatusTransitions(
-  //         milestones,
-  //         oldMilestoneMap
-  //       );
-  //     } catch (Exception e) {
-  //       errorOccurred = true;
-  //     }
-  //     Test.stopTest();
-
-  //     // The method adds error to the field, so we check if the status remains as intended
-  //     Assert.areEqual(
-  //       'Not Started',
-  //       milestones[0].Status__c,
-  //       'Status should be set to Not Started (with error)'
-  //     );
-  //   }
-
-  //   @isTest
-  //   static void testPreventCriticalMilestoneDeletion_CompletedMilestone() {
-  //     // Test deletion prevention for completed milestone
-  //     List<Milestones__c> completedMilestones = [
-  //       SELECT Id, Status__c, IsActive__c, ProjectId__c
-  //       FROM Milestones__c
-  //       WHERE Status__c = 'Completed'
-  //       LIMIT 1
-  //     ];
-
-  //     Test.startTest();
-  //     Boolean errorOccurred = false;
-  //     try {
-  //       MilestoneController.preventCriticalMilestoneDeletion(completedMilestones);
-  //     } catch (Exception e) {
-  //       errorOccurred = true;
-  //     }
-  //     Test.stopTest();
-
-  //     // The method should add an error to prevent deletion
-  //     Assert.areEqual(
-  //       'Completed',
-  //       completedMilestones[0].Status__c,
-  //       'Completed milestone should trigger deletion prevention'
-  //     );
-  //   }
-
-  //   @isTest
-  //   static void testPreventCriticalMilestoneDeletion_ActiveMilestone() {
-  //     // Test deletion prevention for active milestone
-  //     List<Milestones__c> activeMilestones = [
-  //       SELECT Id, Status__c, IsActive__c, ProjectId__c
-  //       FROM Milestones__c
-  //       WHERE IsActive__c = TRUE
-  //       LIMIT 1
-  //     ];
-
-  //     Test.startTest();
-  //     Boolean errorOccurred = false;
-  //     try {
-  //       MilestoneController.preventCriticalMilestoneDeletion(activeMilestones);
-  //     } catch (Exception e) {
-  //       errorOccurred = true;
-  //     }
-  //     Test.stopTest();
-
-  //     // The method should add an error to prevent deletion
-  //     Assert.isTrue(
-  //       activeMilestones[0].IsActive__c,
-  //       'Active milestone should trigger deletion prevention'
-  //     );
-  //   }
-
-  //   @isTest
-  //   static void testPreventCriticalMilestoneDeletion_AllowedDeletion() {
-  //     // // Test that non-critical milestones can be deleted
-  //     // List<Milestones__c> nonCriticalMilestones = [
-  //     //   SELECT Id, Status__c, IsActive__c, ProjectId__c
-  //     //   FROM Milestones__c
-  //     //   WHERE Status__c != 'Completed' AND IsActive__c = FALSE
-  //     //   LIMIT 1
-  //     // ];
-
-  //     // Test.startTest();
-  //     // try {
-  //     //   MilestoneController.preventCriticalMilestoneDeletion(
-  //     //     nonCriticalMilestones
-  //     //   );
-  //     //   // Should not throw any exception
-  //     //   Assert.areNotEqual(
-  //     //     'Completed',
-  //     //     nonCriticalMilestones[0].Status__c,
-  //     //     'Non-critical milestone should allow deletion'
-  //     //   );
-  //     //   Assert.isFalse(
-  //     //     nonCriticalMilestones[0].IsActive__c,
-  //     //     'Non-active milestone should allow deletion'
-  //     //   );
-  //     // } catch (Exception e) {
-  //     //   Assert.fail(
-  //     //     'Non-critical milestone deletion should be allowed: ' + e.getMessage()
-  //     //   );
-  //     // }
-  //     // Test.stopTest();
-  //   }
-
   @isTest
   static void testGetStatusChangedMilestones_WithChanges() {
     // Test getting milestones with status changes
@@ -205,7 +82,7 @@ public class MilestoneControllerTest {
     // Create old versions with different status
     for (Milestones__c milestone : milestones) {
       Milestones__c oldMilestone = milestone.clone(true);
-      oldMilestone.Status__c = 'In Progress'; // Different from current status
+      oldMilestone.Status__c = 'In Progress';
       oldMilestoneMap.put(milestone.Id, oldMilestone);
     }
 
@@ -236,7 +113,7 @@ public class MilestoneControllerTest {
     // Create old versions with same status
     for (Milestones__c milestone : milestones) {
       Milestones__c oldMilestone = milestone.clone(true);
-      oldMilestone.Status__c = milestone.Status__c; // Same status
+      oldMilestone.Status__c = milestone.Status__c;
       oldMilestoneMap.put(milestone.Id, oldMilestone);
     }
 
