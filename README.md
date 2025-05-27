@@ -5,23 +5,21 @@
 </p>
 
 <p align="center">
-    <img alt="Platform" src="https://img.shields.io/static/v1?label=Platform&message=Salesforce&color=FF3737&labelColor=f0f9ff">
-    <img alt="project name" src="https://img.shields.io/badge/Project-Management-FF3737?&labelColor=f0f9ff"></img>    
-    <img alt="Repository size" src="https://img.shields.io/github/repo-size/GabrielMedradoS/Project-System-Management?color=FF3737&labelColor=f0f9ff">
-    <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/gabrielmedrados/Project-System-Management?&color=FF3737&labelColor=f0f9ff">    
+    <img alt="Platform" src="https://img.shields.io/static/v1?label=Platform&message=Salesforce&color=0369a1&labelColor=f0f9ff">
+    <img alt="project name" src="https://img.shields.io/badge/Project-Management-0369a1?&labelColor=f0f9ff"></img>    
+    <img alt="Repository size" src="https://img.shields.io/github/repo-size/GabrielMedradoS/Project-System-Management?color=0369a1&labelColor=f0f9ff">
+    <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/gabrielmedrados/Project-System-Management?&color=0369a1&labelColor=f0f9ff">    
     <a href="">
-        <img alt="License" src="https://img.shields.io/static/v1?label=License&message=MIT&color=FF3737&labelColor=f0f9ff">
+        <img alt="License" src="https://img.shields.io/static/v1?label=License&message=MIT&color=0369a1&labelColor=f0f9ff">
     </a>
 </p>
 
 <p align="center">
-    <a href="#-objetivo">Objetivo</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-Objectives">Objectives</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
     <a href="#-features">Features</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#-demonstração">Demonstração</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#-tecnologias">Tecnologias</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#-documentação">Documentação</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="LICENSE">License</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#-autor">Autor</a> 
+    <a href="#-Demonstration">Demonstration</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-Documentation">Documentation</a> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#-autor">Author</a> 
 </p>
 
 ## 📷 Layout
@@ -32,7 +30,7 @@
 <img src=".github/github image.png"/>
 </div>
 
-## 🎯 Objetivo
+## 🎯 Objectives
 
 <div align="justify">
     (Project System Management) <br>
@@ -46,42 +44,44 @@
 - [x] 3. Automatic status control: “Not Started”, “In Progress” or “Completed.
 - [x] 4. Restriction with Validation Rules so that regular users cannot manually change the status of projects and milestones.
 
-## 💻 Demonstração:
+## 💻 Demonstration:
 
 <div align='center'>
 🚧 Under construction 🚧
 </div>
 
-## 🚴🏻‍♂️ Rodar o projeto
+## 🚴🏻‍♂️ Run the project
 
-Para baixar o código-fonte do projeto em sua máquina, primeiramente terá que ter instalado o [**Git**](https://git-scm.com/).
-Com o Git instalado, em seu terminal execute o seguinte comando:
+To download the project's source code to your machine, you will first need to have [**Git**](https://git-scm.com/).
+With Git installed, run the following command in your terminal:
 
 ```bash
 git clone https://github.com/GabrielMedradoS/Project-System-Management.git
 ```
 
-Para instalar as dependências e executar o projeto terá que ter instalado em sua máquina o [**node.js**](https://nodejs.org/en/), que vem acompanhado do npm.
+To install the dependencies and run the project you will need to have [**node.js**](https://nodejs.org/en/), installed on your machine, which comes with npm.
 
-Instale as dependências usando **npm**:
+Install dependencies with **npm**:
 
 ```bash
 # npm
 npm install
 ```
 
-Execute o projeto:
+Execute the project:
 
 ```bash
 # npm
 npm run dev
 ```
 
-Entre em uma Org Salesforce
+Log in a Org Salesforce
 
-## 📜 Documentação
+## 📜 Documentation
 
-#### 👇 Clique para ver as Dependências do projeto
+You will see a full documentation under [documents | Salesforce]() provided in email for more details.
+
+#### 👇 Click to view Project Dependencies
 
 <details>
     <summary>Dependencies</summary>
@@ -146,10 +146,6 @@ Entre em uma Org Salesforce
 - Faça um **pull request** com sua feature;
 
 Pull requests são sempre bem-vindos. Em caso de dúvidas ou sugestões, crie uma _**issue**_ ou entre em contato comigo.
-
-## ⚖️ License
-
-This project is under the MIT license. See the archive [LICENSE]() for more details.
 
 ## ✍🏾 Autor
 
