@@ -9,9 +9,6 @@
     <img alt="project name" src="https://img.shields.io/badge/Project-Management-0369a1?&labelColor=f0f9ff"></img>    
     <img alt="Repository size" src="https://img.shields.io/github/repo-size/GabrielMedradoS/Project-System-Management?color=0369a1&labelColor=f0f9ff">
     <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/gabrielmedrados/Project-System-Management?&color=0369a1&labelColor=f0f9ff">    
-    <a href="">
-        <img alt="License" src="https://img.shields.io/static/v1?label=License&message=MIT&color=0369a1&labelColor=f0f9ff">
-    </a>
 </p>
 
 <p align="center">
