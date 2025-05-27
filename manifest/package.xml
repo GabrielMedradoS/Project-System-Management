@@ -49,6 +49,7 @@
 		<members>Project_Management_UtilityBar</members>
 		<members>Project_Record_Page</members>
 		<members>Task_Record_Page</members>
+		<members>Project_Home_Page</members>
 		<name>FlexiPage</name>
 	</types>
 	<types>
