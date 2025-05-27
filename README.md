@@ -81,6 +81,109 @@ You will see a full documentation under [documents | Salesforce]() provided in e
 #### 👇 Click to view Project Dependencies
 
 <details>
+  <summary>Package XML</summary>
+  
+```bash
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+	<types>
+		<members>Milestones__c.Validation_Rule_Change_Status</members>
+		<members>Projects__c.Validation_Rule_Change_Status</members>
+		<name>ValidationRule</name>
+	</types>
+	<types>
+		<members>MilestoneTrigger</members>
+		<members>TaskTrigger</members>
+		<name>ApexTrigger</name>
+	</types>
+	<types>
+		<members>TaskTriggerHandler</members>
+		<members>TaskController</members>
+		<members>TaskControllerTest</members>
+		<members>MilestoneController</members>
+		<members>MilestoneControllerTest</members>
+		<members>MilestoneTriggerHandler</members>
+		<members>MilestoneWrapper</members>
+		<members>ProjectController</members>
+		<members>ProjectMilestoneTaskProcessor</members>
+		<members>ProjectMilestoneTaskProcessorTest</members>
+		<members>ProjectWrapper</members>
+		<members>TaskWrapper</members>
+		<name>ApexClass</name>
+	</types>
+	<types>
+		<members>Milestones__c.Milestone_Compact_Layout</members>
+		<members>Projects__c.Project_Compact_Layout</members>
+		<name>CompactLayout</name>
+	</types>
+	<types>
+		<members>image_branding</members>
+		<name>ContentAsset</name>
+	</types>
+	<types>
+		<members>Project_Management</members>
+		<name>CustomApplication</name>
+	</types>
+	<types>
+		<members>Activity</members>
+		<members>Milestones__c</members>
+		<members>Projects__c</members>
+		<members>Task</members>
+		<name>CustomObject</name>
+	</types>
+	<types>
+		<members>Milestones__c</members>
+		<members>Projects__c</members>
+		<name>CustomTab</name>
+	</types>
+	<types>
+		<members>Milestone_Record_Page</members>
+		<members>Project_Management_UtilityBar</members>
+		<members>Project_Record_Page</members>
+		<members>Task_Record_Page</members>
+		<members>Project_Home_Page</members>
+		<name>FlexiPage</name>
+	</types>
+	<types>
+		<members>GlobalStatusValue</members>
+		<name>GlobalValueSet</name>
+	</types>
+	<types>
+		<members>Milestones__c-Milestone Layout</members>
+		<members>Projects__c-Project Layout</members>
+		<members>Task-Project Task Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
+		<members>approvalManagementForm</members>
+		<members>milestoneManagmentForm</members>
+		<members>progressBar</members>
+		<members>projectOverview</members>
+		<members>projectManagementForm</members>
+		<members>tasksManagementForm</members>
+		<name>LightningComponentBundle</name>
+	</types>
+	<types>
+		<members>Projects__c.All</members>
+		<members>Projects__c.Completed_Projects</members>
+		<members>Projects__c.New_Projects</members>
+		<members>Projects__c.On_going_Projects</members>
+		<name>ListView</name>
+	</types>
+	<types>
+		<members>Milestone_Status_Path</members>
+		<members>Project_Status_Path</members>
+		<name>PathAssistant</name>
+	</types>
+	<version>63.0</version>
+</Package>
+
+````
+
+</details>
+
+
+<details>
     <summary>Dependencies</summary>
 
 ```json
@@ -127,7 +230,7 @@ You will see a full documentation under [documents | Salesforce]() provided in e
     "**/{aura,lwc}/**/*.js": ["eslint"]
   }
 }
-```
+````
 
 </details>
 
