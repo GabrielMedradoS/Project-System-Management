@@ -72,6 +72,7 @@
 		<members>approvalManagementForm</members>
 		<members>milestoneManagmentForm</members>
 		<members>progressBar</members>
+		<members>projectOverview</members>
 		<members>projectManagementForm</members>
 		<members>tasksManagementForm</members>
 		<name>LightningComponentBundle</name>
