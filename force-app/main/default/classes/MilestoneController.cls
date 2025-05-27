@@ -6,7 +6,6 @@ public with sharing class MilestoneController {
     for (Milestones__c milestone : newMilestones) {
       Milestones__c oldMilestone = oldMilestoneMap.get(milestone.Id);
 
-      // Example: Prevent changing from Completed to Not Started
       if (
         oldMilestone.Status__c == 'Completed' &&
         milestone.Status__c == 'Not Started'

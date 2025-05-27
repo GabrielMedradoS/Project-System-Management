@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 	<types>
+		<members>Milestones__c.Validation_Rule_Change_Status</members>
+		<members>Projects__c.Validation_Rule_Change_Status</members>
+		<name>ValidationRule</name>
+	</types>
+	<types>
 		<members>MilestoneTrigger</members>
 		<members>TaskTrigger</members>
 		<name>ApexTrigger</name>

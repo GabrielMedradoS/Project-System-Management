@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Validation_Rule_Change_Status</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+  ISCHANGED(Status__c),
+  NOT($Profile.Name = &quot;System Administrator&quot;)
+)</errorConditionFormula>
+    <errorMessage>If you are not a admin, you cant change the status</errorMessage>
+</ValidationRule>

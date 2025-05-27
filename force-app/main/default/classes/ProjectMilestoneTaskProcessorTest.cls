@@ -21,7 +21,7 @@ public class ProjectMilestoneTaskProcessorTest {
       '    {\n' +
       '      "id": 1,\n' +
       '      "name": "2nd Milestone",\n' +
-      '      "type": "2",\n' +
+      '      "type": 2,\n' +
       '      "dueDate": "2025-05-20",\n' +
       '      "tasksCheckbox": false,\n' +
       '      "tasks": [{ "name": "Task 2", "dueDate": "2025-05-20", "subject": "Another Subject" }]\n' +
