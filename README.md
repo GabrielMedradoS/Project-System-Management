@@ -1,11 +1,11 @@
-# Project System Management
+## Project System Management
 
 <p align='center'>
 <b height="50%" width="50%"></b>
 </p>
 
 <p align="center">
-    <img alt="Platform" src="https://img.shields.io/static/v1?label=Platform&message=Salesforce&color=0369a1&labelColor=f0f9ff">
+    <img alt="Platform" src="https://img.shields.io/static/v1?label=Platform&message=Salesforce&color=0369a1&labelColor=FF3737">
     <img alt="project name" src="https://img.shields.io/badge/Project-Management-0369a1?&labelColor=f0f9ff"></img>    
     <img alt="Repository size" src="https://img.shields.io/github/repo-size/GabrielMedradoS/Project-System-Management?color=0369a1&labelColor=f0f9ff">
     <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/gabrielmedrados/Project-System-Management?&color=0369a1&labelColor=f0f9ff">    
@@ -29,21 +29,22 @@
 #### Screenshot:
 
 <div align='center'>
-🚧 Under construction 🚧
+<img src=".github/github image.png"/>
 </div>
 
 ## 🎯 Objetivo
 
 <div align="justify">
-    (Learning Management System) <br>
-    O objetivo é criar uma plataforma interativa de criação de cursos disponibilizado por professores
-    onde os alunos poderão acessar o curso de seu interesse e aprender diretamente do site com video aulas disponibilizados pelo professor criador do curso e seus administradores.
-    A ideia é facilitar o aprendizado à distância criando um software robusto e de fácil acesso/aprendizado, com uma metodologia didática e diversos cursos de treinamento tanto para o professor quanto para o aluno
+    (Project System Management) <br>
+    This project aims to create a simple project management system within Salesforce, leveraging standard platform features such as standard objects (Task) and Lightning Web Components (LWC), and extending the functionality with custom objects such as Projects__c and Milestones__c. The system allows you to track the lifecycle of a project, its milestones, and the tasks (to-dos) associated with each stage.
 </div>
 
 ## ✨ Features
 
-- [] criação de cursos imediata
+- [x] 1. Automatic calculation of the % completion of Milestones based on tasks.
+- [x] 2. Automatic calculation of the % completion of Projects based on Milestones.
+- [x] 3. Automatic status control: “Not Started”, “In Progress” or “Completed.
+- [x] 4. Restriction with Validation Rules so that regular users cannot manually change the status of projects and milestones.
 
 ## 💻 Demonstração:
 
