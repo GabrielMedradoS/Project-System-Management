@@ -76,6 +76,8 @@ Log in a Org Salesforce
 
 ## 📜 Documentation
 
+The main App is Project Management, there you will see all related tabs to make your first project.
+
 You will see a full documentation under [documents | Salesforce]() provided in email for more details.
 
 #### 👇 Click to view Project Dependencies
