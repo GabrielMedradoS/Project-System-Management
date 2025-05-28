@@ -43,9 +43,7 @@
 
 ## 💻 Demonstration:
 
-<div align='center'>
-🚧 Under construction 🚧
-</div>
+https://github.com/user-attachments/assets/7a760502-bdc8-4311-8f6e-4e9f1efbd26f
 
 ## 🚴🏻‍♂️ Run the project
 
