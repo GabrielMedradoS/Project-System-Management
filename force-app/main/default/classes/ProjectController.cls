@@ -1,12 +1,12 @@
 public with sharing class ProjectController {
   @AuraEnabled(cacheable=true)
-  public static List<MilestoneWrapper> projectOverview(Id projectId) {
+  public static List<ResponseWrapper> projectOverview(Id projectId) {
     return getMilestonesWithTasks(projectId);
   }
 
   @TestVisible
-  private static List<MilestoneWrapper> getMilestonesWithTasks(Id projectId) {
-    List<MilestoneWrapper> milestoneWrappers = new List<MilestoneWrapper>();
+  private static List<ResponseWrapper> getMilestonesWithTasks(Id projectId) {
+    List<ResponseWrapper> responseWrappers = new List<ResponseWrapper>();
 
     try {
       List<Milestones__c> milestonesList = [
@@ -17,8 +17,7 @@ public with sharing class ProjectController {
           Status__c,
           DueDate__c,
           PercentCompleted__c,
-          Priority__c,
-          projectId__c
+          Priority__c
         FROM Milestones__c
         WHERE projectId__c = :projectId
         ORDER BY DueDate__c ASC NULLS LAST, Priority__c DESC
@@ -33,15 +32,7 @@ public with sharing class ProjectController {
 
       if (!milestoneIds.isEmpty()) {
         List<Task> tasksList = [
-          SELECT
-            Id,
-            Subject,
-            WhatId,
-            Status,
-            Priority,
-            ActivityDate,
-            WhatId,
-            Owner.Name
+          SELECT Id, Subject, Status, Priority, ActivityDate, WhatId, Owner.Name
           FROM Task
           WHERE WhatId IN :milestoneIds
           ORDER BY ActivityDate ASC NULLS LAST, Priority DESC
@@ -57,24 +48,15 @@ public with sharing class ProjectController {
       }
 
       for (Milestones__c milestone : milestonesList) {
-        MilestoneWrapper wrapper = new MilestoneWrapper();
+        ResponseWrapper wrapper = new ResponseWrapper();
+        wrapper.milestone = milestone;
+        wrapper.tasks = milestoneTasksMap.get(milestone.Id);
 
-        wrapper.Id = milestone.Id;
-
-        List<Task> milestoneTasks = milestoneTasksMap.get(milestone.Id);
-        if (milestoneTasks != null && !milestoneTasks.isEmpty()) {
-          List<TaskWrapper> taskWrappers = new List<TaskWrapper>();
-          for (Task taskObj : milestoneTasks) {
-            TaskWrapper taskWrapper = new TaskWrapper();
-            taskWrapper.id = taskObj.Id;
-
-            taskWrappers.add(taskWrapper);
-          }
-
-          wrapper.tasks = taskWrappers;
+        if (wrapper.tasks == null) {
+          wrapper.tasks = new List<Task>();
         }
 
-        milestoneWrappers.add(wrapper);
+        responseWrappers.add(wrapper);
       }
     } catch (Exception e) {
       throw new AuraHandledException(
@@ -82,6 +64,14 @@ public with sharing class ProjectController {
       );
     }
 
-    return milestoneWrappers;
+    return responseWrappers;
+  }
+
+  public class ResponseWrapper {
+    @AuraEnabled
+    public Milestones__c milestone { get; set; }
+
+    @AuraEnabled
+    public List<Task> tasks { get; set; }
   }
 }
