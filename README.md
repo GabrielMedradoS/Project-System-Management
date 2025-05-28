@@ -65,12 +65,8 @@ npm install
 
 Execute the project:
 
-```bash
-# npm
-npm run dev
-```
-
-Log in a Org Salesforce
+Log in a Org Salesforce, enter in the project management app.
+Create your first project 🚀
 
 ## 📜 Documentation
 
