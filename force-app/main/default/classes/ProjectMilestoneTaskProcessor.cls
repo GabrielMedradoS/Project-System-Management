@@ -19,6 +19,7 @@ public class ProjectMilestoneTaskProcessor {
       Projects__c projectToInsert = projectData.getProject();
       insert projectToInsert;
       result.projectTitle = projectToInsert.ProjectTitle__c;
+      result.projectId = projectToInsert.Id;
 
       List<MilestoneWrapper> milestoneListWrappers = projectData.getMilestones();
       List<Milestones__c> milestonesToInsert = new List<Milestones__c>();
@@ -81,6 +82,8 @@ public class ProjectMilestoneTaskProcessor {
     public String message;
     @AuraEnabled
     public String projectTitle;
+    @AuraEnabled
+    public String projectId;
     @AuraEnabled
     public String errorDetails;
     @AuraEnabled
