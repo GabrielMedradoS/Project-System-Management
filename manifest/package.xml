@@ -79,6 +79,7 @@
 	</types>
 	<types>
 		<members>Projects__c.All</members>
+		<members>Task.All_Tasks</members>
 		<members>Projects__c.Completed_Projects</members>
 		<members>Projects__c.New_Projects</members>
 		<members>Projects__c.On_going_Projects</members>

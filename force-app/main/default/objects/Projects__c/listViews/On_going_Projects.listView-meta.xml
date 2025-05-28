@@ -2,6 +2,15 @@
 <ListView xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>On_going_Projects</fullName>
     <columns>NAME</columns>
+    <columns>ProjectTitle__c</columns>
+    <columns>Priority__c</columns>
+    <columns>Status__c</columns>
+    <columns>StartDate__c</columns>
     <filterScope>Everything</filterScope>
+    <filters>
+        <field>Status__c</field>
+        <operation>equals</operation>
+        <value>In Progress</value>
+    </filters>
     <label>On going Projects</label>
 </ListView>
