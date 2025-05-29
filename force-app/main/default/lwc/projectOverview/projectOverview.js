@@ -1,4 +1,3 @@
-// projectMilestonesOverview.js
 import { LightningElement, api, wire, track } from "lwc";
 import { getRecord, getFieldValue } from "lightning/uiRecordApi";
 
@@ -22,7 +21,7 @@ export default class ProjectMilestonesOverview extends LightningElement {
   @api recordId;
 
   @track projectData = {};
-  milestonesData = [];
+  @track milestonesData = [];
   error;
   isLoading = true;
 
@@ -43,7 +42,6 @@ export default class ProjectMilestonesOverview extends LightningElement {
     }
   }
 
-  // Wire to get Milestones and Tasks
   @wire(projectOverview, { projectId: "$recordId" })
   wiredMilestones({ error, data }) {
     this.isLoading = false;
@@ -57,12 +55,19 @@ export default class ProjectMilestonesOverview extends LightningElement {
   }
 
   get projectStatus() {
+    return this.projectData.status;
+  }
+
+  get statusProjectVariant() {
     switch (this.projectData.status) {
-      case "Active":
       case "In Progress":
-        return "success";
+        return "slds-theme_warning";
       case "Completed":
-        return "success";
+        return "slds-theme_success";
+      case "Blocked":
+        return "slds-theme_error";
+      case "Stopped":
+        return "slds-theme_error";
       default:
         return "neutral";
     }
