@@ -23,10 +23,7 @@
           >
             {projectData.name}
           </h2>
-          <p
-            class="slds-text-body_regular slds-text-color_weak"
-            if:true={projectDescription}
-          >
+          <p class="slds-text-body_regular slds-text-color_weak">
             {projectData.description}
           </p>
         </div>
@@ -35,8 +32,8 @@
         <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
           <div class="slds-text-align_right">
             <lightning-badge
-              label={projectStatus}
-              class={statusProjectVariant}
+              label={projectData.status}
+              class={projectData.statusClass}
             ></lightning-badge>
             <div class="slds-m-top_x-small">
               <p class="slds-text-body_small">Start: {projectData.startDate}</p>
@@ -79,6 +76,7 @@
                 <div class="slds-text-align_right">
                   <lightning-badge
                     label={milestoneWrapper.milestone.Status__c}
+                    class={milestoneWrapper.statusClass}
                     variant="neutral"
                   ></lightning-badge>
 
@@ -165,6 +163,7 @@
                             <div class="slds-text-align_right">
                               <lightning-badge
                                 label={task.Status}
+                                class={task.statusClass}
                                 variant="neutral"
                               ></lightning-badge>
 

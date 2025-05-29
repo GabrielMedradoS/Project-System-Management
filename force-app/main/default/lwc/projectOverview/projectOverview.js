@@ -32,6 +32,9 @@ export default class ProjectMilestonesOverview extends LightningElement {
         name: getFieldValue(data, PROJECT_NAME_FIELD),
         description: getFieldValue(data, PROJECT_DESCRIPTION_FIELD),
         status: getFieldValue(data, PROJECT_STATUS_FIELD),
+        statusClass: this.getStatusClass(
+          getFieldValue(data, PROJECT_STATUS_FIELD)
+        ),
         startDate: getFieldValue(data, PROJECT_START_DATE_FIELD),
         endDate: getFieldValue(data, PROJECT_END_DATE_FIELD)
       };
@@ -46,7 +49,18 @@ export default class ProjectMilestonesOverview extends LightningElement {
   wiredMilestones({ error, data }) {
     this.isLoading = false;
     if (data) {
-      this.milestonesData = data;
+      this.milestonesData = data.map((wrapper) => {
+        const enhancedTask = wrapper.tasks.map((task) => ({
+          ...task,
+          statusClass: this.getStatusClass(task.Status)
+        }));
+
+        return {
+          ...wrapper,
+          tasks: enhancedTask,
+          statusClass: this.getStatusClass(wrapper.milestone.Status__c)
+        };
+      });
       this.error = undefined;
     } else if (error) {
       this.error = error;
@@ -54,16 +68,12 @@ export default class ProjectMilestonesOverview extends LightningElement {
     }
   }
 
-  get projectStatus() {
-    return this.projectData.status;
-  }
-
-  get statusProjectVariant() {
-    switch (this.projectData.status) {
-      case "In Progress":
-        return "slds-theme_warning";
+  getStatusClass(status) {
+    switch (status) {
       case "Completed":
         return "slds-theme_success";
+      case "In Progress":
+        return "slds-theme_warning";
       case "Blocked":
         return "slds-theme_error";
       case "Stopped":
@@ -71,9 +81,5 @@ export default class ProjectMilestonesOverview extends LightningElement {
       default:
         return "neutral";
     }
-  }
-
-  projectDescription() {
-    return this.projectData.description;
   }
 }
